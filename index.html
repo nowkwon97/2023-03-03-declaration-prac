@@ -30,7 +30,11 @@
     // for(let i = 0; i < ulStyleObject.length; i++) {
     //   makeUl.style[ulStyleObject[i]] = ulStyleValue[i];
     // };
-
+    let domStyle = {
+      firstArray : ["width", "height", "border"],
+      secondArray : ["100px", "100px", "1px solid black"],
+      element : root.children[0]
+    }
     // 순서4. 유지보수를 위해 함수화
     function twoArrayDomStyling (firstArray, secondArray, element) {
       for(let i = 0; i < firstArray.length; i++) {
@@ -38,6 +42,13 @@
       };
     };
     twoArrayDomStyling(ulStyleObject, ulStyleValue, makeUl);
+
+    function oneObjectDomStyling (object) {
+      for(let i = 0; i < object.firstArray.length; i++) {
+        object.element.style[object.firstArray[i]] = object.secondArray[i];
+      };
+    }
+    oneObjectDomStyling(domStyle);
 
   </script>
 
