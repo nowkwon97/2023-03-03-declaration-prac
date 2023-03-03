@@ -7,6 +7,39 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+    const makeUl = document.createElement('ul');
+    root.appendChild(makeUl);
+
+    // 순서1. 직관적인 1차 접근 -> 패턴 발견
+    // makeUl.style.width = "100px";
+    // makeUl.style.height = "100px";
+    // makeUl.style.border = "1px solid black";
+
+    // 순서2. 속성과 값들의 객체화
+    const ulStyleObject = ["width", "height", "border"];
+    const ulStyleValue = ["100px", "100px", "1px solid black"];
+    
+    // makeUl.style[ulStyleObject[0]] = "100px";
+    // makeUl.style[ulStyleObject[1]] = "100px";
+    // makeUl.style[ulStyleObject[2]] = "1px solid black";
+
+    // 순서3. 반복된 패턴을 반복문으로 변경
+    // for(let i = 0; i < ulStyleObject.length; i++) {
+    //   makeUl.style[ulStyleObject[i]] = ulStyleValue[i];
+    // };
+
+    // 순서4. 유지보수를 위해 함수화
+    function twoArrayDomStyling (firstArray, secondArray, element) {
+      for(let i = 0; i < firstArray.length; i++) {
+        element.style[firstArray[i]] = secondArray[i];
+      };
+    };
+    twoArrayDomStyling(ulStyleObject, ulStyleValue, makeUl);
+
+  </script>
+
 </body>
 </html>
